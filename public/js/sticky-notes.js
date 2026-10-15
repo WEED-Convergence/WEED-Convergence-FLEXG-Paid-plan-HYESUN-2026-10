@@ -233,6 +233,8 @@
 
     noteEls.forEach(function (el, id) {
       if (!seen.has(id)) {
+        // 입력 중이거나 드래그 중인 메모는 서버 목록에 아직 반영되지 않았더라도 화면에서 지우지 않습니다.
+        if (draggingId === id || editingIds.has(id)) return;
         el.remove();
         noteEls.delete(id);
         editingIds.delete(id);
