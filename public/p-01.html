@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>P-01 상품 등록 · 화면설계서</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="sticky-notes.css">
+</head>
+<body>
+<div class="app">
+  <aside class="index-panel" id="indexPanel"></aside>
+
+  <main class="screen-panel">
+    <div class="screen-head">
+      <div class="screen-title">P-01 상품 등록</div>
+      <div class="screen-path">고객사 어드민 &gt; 상품 &gt; 상품 등록</div>
+    </div>
+
+    <div class="screen-toolbar">
+      <select id="noteTypeSelect">
+        <option value="policy">정책 확인</option>
+        <option value="dev">개발 협의</option>
+        <option value="design">디자인 확인</option>
+      </select>
+      <button type="button" id="addNoteBtn" class="primary">+ 메모 붙이기</button>
+      <button type="button" id="toggleHideBtn">메모 숨기기</button>
+    </div>
+
+    <div class="screen-container" id="screenContainer">
+      <div class="form-row">
+        <label class="form-label"><span class="desc-num" data-num="1">1</span>상품명</label>
+        <input class="form-control" type="text" value="프리미엄 무드등 M 사이즈" readonly>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label"><span class="desc-num" data-num="2">2</span>판매가</label>
+        <input class="form-control" type="text" value="39,000원" readonly>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label"><span class="desc-num" data-num="3">3</span>재고 수량</label>
+        <input class="form-control" type="text" value="128" readonly>
+        <div class="form-help">재고가 0이 되면 자동으로 품절 상태로 전환됩니다.</div>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label"><span class="desc-num" data-num="4">4</span>배송비 정책</label>
+        <input class="form-control" type="text" value="기본 배송비 정책 (3,000원)" readonly>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label"><span class="desc-num" data-num="5">5</span>노출 여부</label>
+        <label class="switch">
+          <input type="checkbox" checked disabled>
+          <span class="switch-track"></span>
+        </label>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn"><span class="desc-num" data-num="6">6</span>취소</button>
+        <button type="button" class="btn btn-primary">저장</button>
+      </div>
+    </div>
+  </main>
+
+  <aside class="desc-panel" id="descPanel"></aside>
+</div>
+
+<script>
+  window.CURRENT_SCREEN = 'p-01';
+  window.SCREEN_INFO = {
+    title: 'P-01 상품 등록',
+    path: '고객사 어드민 > 상품 > 상품 등록',
+    descriptions: [
+      { no: 1, name: '상품명', desc: '고객에게 노출되는 상품의 명칭을 입력합니다. 최대 50자까지 입력할 수 있습니다.' },
+      { no: 2, name: '판매가', desc: '실제 판매가를 원 단위로 입력합니다. 할인가는 별도 화면에서 설정합니다.' },
+      { no: 3, name: '재고 수량', desc: '현재 판매 가능한 재고 수량을 입력합니다. 재고가 0이 되면 자동으로 품절 상태로 전환됩니다.' },
+      { no: 4, name: '배송비 정책', desc: '상품에 적용할 배송비 정책을 선택합니다. 정책의 상세 기준은 슈퍼어드민 화면에서 관리합니다.' },
+      { no: 5, name: '노출 여부', desc: '쇼핑몰 화면에 상품을 노출할지 여부를 설정합니다. 비노출로 설정하면 상품 상세 페이지에 접근할 수 없습니다.' },
+      { no: 6, name: '취소 / 저장 버튼', desc: '입력한 내용을 저장하거나, 취소하고 이전 화면으로 돌아갑니다.' },
+    ],
+  };
+</script>
+<script src="js/screens.js"></script>
+<script src="js/notes-store.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/sticky-notes.js"></script>
+</body>
+</html>

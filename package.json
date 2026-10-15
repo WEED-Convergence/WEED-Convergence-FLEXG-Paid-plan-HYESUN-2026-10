@@ -1,0 +1,9 @@
+{
+  "name": "screen-spec-prototype",
+  "version": "0.1.0",
+  "private": true,
+  "description": "화면설계서용 정적 프로토타입 (3단 레이아웃 + 협의용 스티커 메모)",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

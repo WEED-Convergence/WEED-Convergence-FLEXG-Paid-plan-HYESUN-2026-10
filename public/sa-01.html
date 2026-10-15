@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>SA-01 배송비 정책 관리 · 화면설계서</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="sticky-notes.css">
+</head>
+<body>
+<div class="app">
+  <aside class="index-panel" id="indexPanel"></aside>
+
+  <main class="screen-panel">
+    <div class="screen-head">
+      <div class="screen-title">SA-01 배송비 정책 관리</div>
+      <div class="screen-path">슈퍼어드민 &gt; 배송 &gt; 배송비 정책 관리</div>
+    </div>
+
+    <div class="screen-toolbar">
+      <select id="noteTypeSelect">
+        <option value="policy">정책 확인</option>
+        <option value="dev">개발 협의</option>
+        <option value="design">디자인 확인</option>
+      </select>
+      <button type="button" id="addNoteBtn" class="primary">+ 메모 붙이기</button>
+      <button type="button" id="toggleHideBtn">메모 숨기기</button>
+    </div>
+
+    <div class="screen-container" id="screenContainer">
+      <div class="policy-list">
+        <span class="desc-num" data-num="1" style="margin: 0 0 4px 2px;">1</span>
+        <div class="policy-item">
+          <div>
+            <div class="policy-item-name">기본 배송비</div>
+            <div class="policy-item-desc">전국 동일 배송비 3,000원을 적용합니다.</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span class="desc-num" data-num="2">2</span>
+            <label class="switch">
+              <input type="checkbox" checked disabled>
+              <span class="switch-track"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="policy-item">
+          <div>
+            <div class="policy-item-name">도서산간 추가 배송비</div>
+            <div class="policy-item-desc">도서산간 지역에 한해 추가 배송비 5,000원을 적용합니다.</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" checked disabled>
+            <span class="switch-track"></span>
+          </label>
+        </div>
+
+        <div class="policy-item">
+          <div>
+            <div class="policy-item-name">무료배송 기준 금액</div>
+            <div class="policy-item-desc">주문 금액이 50,000원 이상이면 배송비를 면제합니다.</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" disabled>
+            <span class="switch-track"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn btn-primary"><span class="desc-num" data-num="3">3</span>저장</button>
+      </div>
+    </div>
+  </main>
+
+  <aside class="desc-panel" id="descPanel"></aside>
+</div>
+
+<script>
+  window.CURRENT_SCREEN = 'sa-01';
+  window.SCREEN_INFO = {
+    title: 'SA-01 배송비 정책 관리',
+    path: '슈퍼어드민 > 배송 > 배송비 정책 관리',
+    descriptions: [
+      { no: 1, name: '정책 목록', desc: '현재 등록된 배송비 정책을 목록으로 표시합니다.' },
+      { no: 2, name: '사용 여부 토글', desc: '정책의 사용 여부를 켜고 끌 수 있습니다. 꺼진 정책은 상품 등록 화면의 선택 항목에 노출되지 않습니다.' },
+      { no: 3, name: '저장 버튼', desc: '변경한 사용 여부를 서버에 저장합니다.' },
+    ],
+  };
+</script>
+<script src="js/screens.js"></script>
+<script src="js/notes-store.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/sticky-notes.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>P-02 주문 목록 · 화면설계서</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="sticky-notes.css">
+</head>
+<body>
+<div class="app">
+  <aside class="index-panel" id="indexPanel"></aside>
+
+  <main class="screen-panel">
+    <div class="screen-head">
+      <div class="screen-title">P-02 주문 목록</div>
+      <div class="screen-path">고객사 어드민 &gt; 주문 &gt; 주문 목록</div>
+    </div>
+
+    <div class="screen-toolbar">
+      <select id="noteTypeSelect">
+        <option value="policy">정책 확인</option>
+        <option value="dev">개발 협의</option>
+        <option value="design">디자인 확인</option>
+      </select>
+      <button type="button" id="addNoteBtn" class="primary">+ 메모 붙이기</button>
+      <button type="button" id="toggleHideBtn">메모 숨기기</button>
+    </div>
+
+    <div class="screen-container" id="screenContainer">
+      <div class="search-bar">
+        <span class="desc-num" data-num="1">1</span>
+        <select disabled><option>주문번호</option></select>
+        <input type="text" placeholder="검색어를 입력합니다" disabled>
+        <select disabled><option>전체 기간</option></select>
+        <button type="button" class="btn">검색</button>
+      </div>
+
+      <div class="result-summary"><span class="desc-num" data-num="2">2</span>총 128건의 주문이 조회되었습니다.</div>
+
+      <table class="order-table">
+        <thead>
+          <tr>
+            <th><span class="desc-num" data-num="3">3</span>주문번호</th>
+            <th>상품</th>
+            <th>금액</th>
+            <th><span class="desc-num" data-num="4">4</span>상태</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>20261015-0012</td>
+            <td>프리미엄 무드등 M 사이즈</td>
+            <td>39,000원</td>
+            <td><span class="status-badge paid">결제완료</span></td>
+          </tr>
+          <tr>
+            <td>20261014-0098</td>
+            <td>천연 디퓨저 세트</td>
+            <td>52,000원</td>
+            <td><span class="status-badge shipping">배송중</span></td>
+          </tr>
+          <tr>
+            <td>20261013-0076</td>
+            <td>북핀 쿠션 2P</td>
+            <td>28,000원</td>
+            <td><span class="status-badge done">배송완료</span></td>
+          </tr>
+          <tr>
+            <td>20261012-0054</td>
+            <td>미니 선반 세트</td>
+            <td>61,000원</td>
+            <td><span class="status-badge canceled">취소</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="pagination">
+        <span class="desc-num" data-num="5">5</span>
+        <a href="#" class="current">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">다음</a>
+      </div>
+    </div>
+  </main>
+
+  <aside class="desc-panel" id="descPanel"></aside>
+</div>
+
+<script>
+  window.CURRENT_SCREEN = 'p-02';
+  window.SCREEN_INFO = {
+    title: 'P-02 주문 목록',
+    path: '고객사 어드민 > 주문 > 주문 목록',
+    descriptions: [
+      { no: 1, name: '검색 조건 바', desc: '주문번호, 주문자명, 주문일자 등의 조건으로 주문을 검색합니다.' },
+      { no: 2, name: '조회 결과 요약', desc: '현재 검색 조건으로 조회된 전체 주문 건수를 표시합니다.' },
+      { no: 3, name: '주문 목록 표', desc: '조회된 주문을 목록 형태로 표시합니다. 행을 클릭하면 주문 상세 화면으로 이동합니다.' },
+      { no: 4, name: '상태 배지', desc: '주문의 현재 처리 상태를 배지 색상으로 구분하여 표시합니다.' },
+      { no: 5, name: '페이지 번호', desc: '조회된 주문이 많을 경우 페이지 단위로 나누어 표시합니다.' },
+    ],
+  };
+</script>
+<script src="js/screens.js"></script>
+<script src="js/notes-store.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/sticky-notes.js"></script>
+</body>
+</html>

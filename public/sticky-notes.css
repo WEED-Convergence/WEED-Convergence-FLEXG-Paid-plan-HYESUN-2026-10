@@ -1,0 +1,147 @@
+.sticky-note {
+  position: absolute;
+  width: 196px;
+  border-radius: 2px 10px 10px 10px;
+  box-shadow: 0 6px 14px rgba(31, 36, 48, 0.18), 0 1px 3px rgba(31, 36, 48, 0.12);
+  font-size: 12px;
+  color: #3A3220;
+  z-index: 20;
+  user-select: none;
+}
+
+.sticky-note[data-type="policy"] { background: #FFEE9C; }
+.sticky-note[data-type="dev"] { background: #CDE6FF; }
+.sticky-note[data-type="design"] { background: #FFD3E2; }
+
+.sticky-note-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 7px 8px 2px;
+  cursor: grab;
+}
+
+.sticky-note.dragging {
+  box-shadow: 0 12px 22px rgba(31, 36, 48, 0.28), 0 2px 4px rgba(31, 36, 48, 0.16);
+  cursor: grabbing;
+  z-index: 30;
+}
+
+.sticky-type {
+  border: none;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 10px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  color: inherit;
+}
+
+.sticky-type:hover {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.sticky-done {
+  border: none;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 2px 7px;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  color: inherit;
+  flex: 0 0 auto;
+}
+
+.sticky-done:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.sticky-body {
+  min-height: 42px;
+  padding: 4px 9px 6px;
+  outline: none;
+  line-height: 1.45;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.sticky-body:empty::before {
+  content: attr(data-placeholder);
+  color: rgba(58, 50, 32, 0.45);
+}
+
+.sticky-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 9px 7px;
+  font-size: 10px;
+  color: rgba(58, 50, 32, 0.55);
+}
+
+.sticky-note.flash {
+  animation: stickyFlash 1s ease;
+}
+
+@keyframes stickyFlash {
+  0%, 100% { outline: 2px solid rgba(47, 111, 235, 0); }
+  50% { outline: 2px solid rgba(47, 111, 235, 0.8); }
+}
+
+.sticky-note.placing-ghost {
+  opacity: 0.6;
+}
+
+/* 메모 붙이기 모드일 때 화면 커서 */
+.screen-container.placing {
+  cursor: crosshair;
+}
+
+/* 되돌리기 토스트 */
+.undo-toast-stack {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  z-index: 1000;
+}
+
+.undo-toast {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 16px;
+  background: #1F2430;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 13px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.undo-toast-text {
+  max-width: 220px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.undo-toast-btn {
+  flex: 0 0 auto;
+  border: none;
+  background: transparent;
+  color: #7FB1FF;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+}
+
+.undo-toast-btn:hover {
+  text-decoration: underline;
+}
